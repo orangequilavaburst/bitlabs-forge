@@ -12,6 +12,10 @@
     </facet>
   </component>
   <component name="McpModuleSettings">
-    <option name="srgType" value="SRG" />
+    <option name="mappingFile" value="C:\Users\orang\Documents\Game Project Files\Bitlabs Forge 1.20.4\bitlabs-forge\build\createMcpToSrg\output.tsrg" />
+    <option name="mcpVersion" value="official_1.20.4" />
+    <option name="minecraftVersion" value="1.20.4" />
+    <option name="platformVersion" value="49.0.38" />
+    <option name="srgType" value="TSRG" />
   </component>
 </module>

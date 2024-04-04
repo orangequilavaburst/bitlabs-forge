@@ -15,6 +15,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import xyz.j8bit.bitlabs.block.ModBlocks;
+import xyz.j8bit.bitlabs.event.ForgeEvents;
 import xyz.j8bit.bitlabs.item.ModCreativeModeTabs;
 import xyz.j8bit.bitlabs.item.ModItems;
 
@@ -25,7 +26,7 @@ public class BitLabsMod
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "bitlabs";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public BitLabsMod()
     {

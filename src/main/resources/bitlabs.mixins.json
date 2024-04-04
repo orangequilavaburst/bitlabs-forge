@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.j8bit.bitlabs.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "bitlabs.refmap.json",
+  "mixins": [
+
+  ],
+  "client": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
