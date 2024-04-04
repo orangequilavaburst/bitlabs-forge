@@ -9,3 +9,4 @@
 /time set noon
 /effect give @p minecraft:instant_health 1 20
 /give @p minecraft:slime_ball
+/spawnpoint
