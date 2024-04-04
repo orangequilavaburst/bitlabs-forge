@@ -1,0 +1,6 @@
+/time set noon
+/time set day
+/time set noon
+/recipe give @p *
+/tp ~ ~30 ~
+/tp ~ 400 ~
