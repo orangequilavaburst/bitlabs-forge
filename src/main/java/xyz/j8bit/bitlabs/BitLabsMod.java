@@ -55,10 +55,18 @@ public class BitLabsMod
             event.accept(ModItems.BAGUETTE);
             event.accept(ModItems.SLICED_BREAD);
 
-            event.accept(ModItems.RAW_DRAGONITE);
-            event.accept(ModItems.DRAGONITE_INGOT);
             event.accept(ModBlocks.DRAGONITE_BLOCK);
             event.accept(ModBlocks.RAW_DRAGONITE_BLOCK);
+            event.accept(ModBlocks.DRAGONITE_ORE);
+            event.accept(ModBlocks.DEEPSLATE_DRAGONITE_ORE);
+            event.accept(ModItems.RAW_DRAGONITE);
+            event.accept(ModItems.DRAGONITE_INGOT);
+
+            event.accept(ModItems.DRAGONITE_SWORD);
+            event.accept(ModItems.DRAGONITE_PICKAXE);
+            event.accept(ModItems.DRAGONITE_AXE);
+            event.accept(ModItems.DRAGONITE_SHOVEL);
+            event.accept(ModItems.DRAGONITE_HOE);
         }
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(ModItems.RAW_DRAGONITE);
@@ -71,6 +79,17 @@ public class BitLabsMod
         else if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
             event.accept(ModBlocks.DRAGONITE_BLOCK);
             event.accept(ModBlocks.RAW_DRAGONITE_BLOCK);
+            event.accept(ModBlocks.DRAGONITE_ORE);
+            event.accept(ModBlocks.DEEPSLATE_DRAGONITE_ORE);
+        }
+        else if (event.getTabKey() == CreativeModeTabs.COMBAT){
+            event.accept(ModItems.DRAGONITE_SWORD);
+        }
+        else if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
+            event.accept(ModItems.DRAGONITE_PICKAXE);
+            event.accept(ModItems.DRAGONITE_AXE);
+            event.accept(ModItems.DRAGONITE_SHOVEL);
+            event.accept(ModItems.DRAGONITE_HOE);
         }
 
     }

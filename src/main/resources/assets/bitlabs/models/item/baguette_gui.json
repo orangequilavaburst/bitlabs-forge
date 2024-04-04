@@ -2,7 +2,8 @@
 
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "bitlabs:item/baguette"
+    "layer0": "bitlabs:item/baguette",
+    "particle": "bitlabs:item/baguette"
   }
 
 }

@@ -3,7 +3,8 @@
   "loader":"forge:separate_transforms",
   "gui_light": "front",
   "base": {
-    "parent": "bitlabs:item/baguette_handheld"
+    "parent": "bitlabs:item/baguette_handheld",
+    "particle": "bitlabs:item/baguette_gui"
   },
   "perspectives": {
     "gui": {

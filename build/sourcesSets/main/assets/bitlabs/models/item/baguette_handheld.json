@@ -2,7 +2,8 @@
 
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "bitlabs:item/baguette_handheld"
+    "layer0": "bitlabs:item/baguette_handheld",
+    "particle": "bitlabs:item/baguette"
   },
   "display": {
     "thirdperson_righthand": {
