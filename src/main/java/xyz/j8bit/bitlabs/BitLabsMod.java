@@ -1,7 +1,6 @@
 package xyz.j8bit.bitlabs;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -129,9 +128,7 @@ public class BitLabsMod
 
         @SubscribeEvent
         public static void registerGUIOverlays(final RegisterGuiOverlaysEvent event){
-
             //event.registerBelowAll("freddy_mask", FreddyMaskOverlay.FREDDY_MASK_OVERLAY);
-
         }
 
     }

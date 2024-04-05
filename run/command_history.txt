@@ -16,3 +16,6 @@
 /kill @e[type=bitlabs:devilsknife]
 /enchant @p minecraft:sharpness
 /effect give @p minecraft:saturation 10 10
+/kill @e[type=!minecraft:player]
+/enchant MegaMan minecraft:fire_aspect
+/enchant MegaMan minecraft:sharpness

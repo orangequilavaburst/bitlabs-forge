@@ -27,7 +27,6 @@ import xyz.j8bit.bitlabs.entity.ModEntities;
 import xyz.j8bit.bitlabs.item.ModItems;
 
 public class DevilsknifeEntity extends AbstractArrow {
-
     private static final EntityDataAccessor<String> OWNER = SynchedEntityData.defineId(DevilsknifeEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<Boolean> ID_FOIL = SynchedEntityData.defineId(DevilsknifeEntity.class, EntityDataSerializers.BOOLEAN);
     private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(ModItems.DEVILSKNIFE.get());
@@ -39,10 +38,9 @@ public class DevilsknifeEntity extends AbstractArrow {
 
     private float rotationStart;
     private float rotationSpeed;
-    private final float ROTATION_SPEED = 5.0f;
+    private final float ROTATION_SPEED = 0.5f;
     private int bounces = 0;
     private static final int MAX_BOUNCES = 1;
-
 
     public DevilsknifeEntity(EntityType<DevilsknifeEntity> devilsknifeEntityEntityType, Level p_36719_) {
         super(ModEntities.DEVILSKNIFE_ENTITY.get(), p_36719_, DEFAULT_ARROW_STACK);
@@ -66,12 +64,11 @@ public class DevilsknifeEntity extends AbstractArrow {
         }
 
         Entity entity = this.getOwner();
-        if ((this.dealtDamage || this.isNoPhysics()) && entity != null) {
+        if (entity != null && (this.dealtDamage || this.isNoPhysics())) {
             if (!this.isAcceptibleReturnOwner()) {
                 if (!this.level().isClientSide && this.pickup == AbstractArrow.Pickup.ALLOWED) {
                     this.spawnAtLocation(this.getPickupItem(), 0.1F);
                 }
-
                 this.discard();
             } else {
                 this.setNoPhysics(true);
@@ -119,15 +116,15 @@ public class DevilsknifeEntity extends AbstractArrow {
 
     }
 
-    protected void onHitEntity(EntityHitResult p_37573_) {
-        Entity entity = p_37573_.getEntity();
+    protected void onHitEntity(EntityHitResult hitResult) {
+        Entity entity = hitResult.getEntity();
         float f = 8.0F;
         if (entity instanceof LivingEntity livingentity) {
             f += EnchantmentHelper.getDamageBonus(this.getPickupItemStackOrigin(), livingentity.getMobType());
         }
 
         Entity entity1 = this.getOwner();
-        DamageSource damagesource = this.damageSources().trident(this, (Entity)(entity1 == null ? this : entity1));
+        DamageSource damagesource = this.damageSources().trident(this, entity1 == null ? this : entity1);
         SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
         if (entity.hurt(damagesource, f)) {
             if (entity.getType() == EntityType.ENDERMAN) {
