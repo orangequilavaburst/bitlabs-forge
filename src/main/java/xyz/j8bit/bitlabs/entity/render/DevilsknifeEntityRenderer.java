@@ -10,8 +10,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -19,7 +17,6 @@ import net.minecraft.world.level.Level;
 import xyz.j8bit.bitlabs.entity.custom.DevilsknifeEntity;
 
 public class DevilsknifeEntityRenderer extends EntityRenderer<DevilsknifeEntity> {
-
     private final ItemRenderer itemRenderer;
 
     public DevilsknifeEntityRenderer(EntityRendererProvider.Context pContext) {
@@ -29,23 +26,21 @@ public class DevilsknifeEntityRenderer extends EntityRenderer<DevilsknifeEntity>
     }
 
     @Override
-    public void render(DevilsknifeEntity pEntity, float pEntityYaw, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
-        ItemStack itemStack = pEntity.getPickupItemStackOrigin();
-        Level level = pEntity.level();
-        pPoseStack.pushPose();
-        pPoseStack.mulPose(Axis.YN.rotationDegrees(Mth.lerp(pPartialTick, pEntity.yRotO, pEntity.getYRot())));
-        pPoseStack.mulPose(Axis.XP.rotationDegrees(Mth.lerp(pPartialTick, pEntity.xRotO, pEntity.getXRot())));
+    public void render(DevilsknifeEntity entity, float pEntityYaw, float pPartialTick, PoseStack poseStack, MultiBufferSource pBuffer, int pPackedLight) {
+        ItemStack itemStack = entity.getPickupItemStackOrigin();
+        Level level = entity.level();
+        poseStack.pushPose();
+        poseStack.mulPose(Axis.YN.rotationDegrees(entity.getYRot()));
+        poseStack.mulPose(Axis.XP.rotationDegrees(90));
+        //poseStack.mulPose(Axis.ZN.rotationDegrees(90));
         if (itemStack.getItem() != Items.AIR){
-
-            BakedModel bakedmodel = this.itemRenderer.getModel(itemStack, pEntity.level(), (LivingEntity)null, pEntity.getId());
-            pPoseStack.popPose();
-            this.itemRenderer.render(itemStack, ItemDisplayContext.GROUND, false, pPoseStack, pBuffer, pPackedLight, OverlayTexture.NO_OVERLAY, bakedmodel);
-
+            BakedModel bakedmodel = this.itemRenderer.getModel(itemStack, entity.level(), null, entity.getId());
+            this.itemRenderer.render(itemStack, ItemDisplayContext.GROUND, false, poseStack, pBuffer, pPackedLight, OverlayTexture.NO_OVERLAY, bakedmodel);
         }
         else {
-            pPoseStack.popPose();
-            super.render(pEntity, pEntityYaw, pPartialTick, pPoseStack, pBuffer, pPackedLight);
+            super.render(entity, pEntityYaw, pPartialTick, poseStack, pBuffer, pPackedLight);
         }
+        poseStack.popPose();
     }
 
     @Override

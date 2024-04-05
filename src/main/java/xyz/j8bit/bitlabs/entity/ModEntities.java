@@ -28,16 +28,12 @@ public class ModEntities {
             () -> EntityType.Builder.of((EntityType.EntityFactory<DevilsknifeEntity>) DevilsknifeEntity::new, MobCategory.MISC).sized(1.5f, 1.5f).build(new ResourceLocation(BitLabsMod.MOD_ID, "devilsknife").toString()));
 
     public static void register(IEventBus bus){
-
         ENTITY_TYPES.register(bus);
-
     }
 
     @SubscribeEvent
     public static void entityRenderers(final EntityRenderersEvent.RegisterRenderers event){
-
         event.registerEntityRenderer(ModEntities.DEVILSKNIFE_ENTITY.get(), DevilsknifeEntityRenderer::new);
-
     }
 
     // this is different than in 1.16 but everything else is the same
