@@ -1,5 +1,6 @@
 package xyz.j8bit.bitlabs.entity.custom;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -36,9 +37,9 @@ public class DevilsknifeEntity extends AbstractArrow {
     public int clientSideDevilsknifeTickCount;
     private boolean dealtDamage;
 
-    private float rotationStart;
+    public float rotationStart;
     private float rotationSpeed;
-    private final float ROTATION_SPEED = 0.5f;
+    private final float ROTATION_SPEED = 15.0f;
     private int bounces = 0;
     private static final int MAX_BOUNCES = 1;
 
@@ -86,7 +87,7 @@ public class DevilsknifeEntity extends AbstractArrow {
         }
 
         super.tick();
-        rotationStart += rotationSpeed;
+        this.rotationStart += this.rotationSpeed * Minecraft.getInstance().getDeltaFrameTime();
         this.updateRotation();
 
     }
@@ -153,7 +154,7 @@ public class DevilsknifeEntity extends AbstractArrow {
         Vec3 vec3 = this.getDeltaMovement();
         double d0 = vec3.horizontalDistance();
         this.setXRot(lerpRotation(this.xRotO, (float)(Mth.atan2(vec3.y, d0) * (double)(180F / (float)Math.PI))));
-        this.setYRot(lerpRotation(this.yRotO, (float)((Mth.atan2(vec3.x, vec3.z)+ + rotationStart) * (double)(180F / (float)Math.PI))));
+        this.setYRot(lerpRotation(this.yRotO, (float)((Mth.atan2(vec3.x, vec3.z)) * (double)(180F / (float)Math.PI))));
 
         this.yRotO = this.getYRot();
         this.xRotO = this.getXRot();

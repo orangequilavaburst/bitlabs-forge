@@ -3,6 +3,7 @@ package xyz.j8bit.bitlabs.entity.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -10,6 +11,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -30,8 +32,11 @@ public class DevilsknifeEntityRenderer extends EntityRenderer<DevilsknifeEntity>
         ItemStack itemStack = entity.getPickupItemStackOrigin();
         Level level = entity.level();
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YN.rotationDegrees(entity.getYRot()));
-        poseStack.mulPose(Axis.XP.rotationDegrees(90));
+        // use entity.rotationStart to help?
+        //poseStack.mulPose(Axis.XP.rotationDegrees(90.0f));
+        //poseStack.mulPose(Axis.ZN.rotationDegrees(entity.rotationStart));
+        poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(pPartialTick, entity.yRotO - 90, entity.getYRot() - 90)));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(pPartialTick, entity.xRotO, entity.getXRot())));
         //poseStack.mulPose(Axis.ZN.rotationDegrees(90));
         if (itemStack.getItem() != Items.AIR){
             BakedModel bakedmodel = this.itemRenderer.getModel(itemStack, entity.level(), null, entity.getId());
