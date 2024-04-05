@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import xyz.j8bit.bitlabs.BitLabsMod;
+import xyz.j8bit.bitlabs.item.custom.DevilsknifeItem;
 
 public class ModItems {
 
@@ -19,6 +20,8 @@ public class ModItems {
     public static final RegistryObject<Item> DRAGONITE_AXE = ITEMS.register("dragonite_axe", () -> new AxeItem(ModToolTiers.DRAGONITE, 7, 1, new Item.Properties()));
     public static final RegistryObject<Item> DRAGONITE_SHOVEL = ITEMS.register("dragonite_shovel", () -> new ShovelItem(ModToolTiers.DRAGONITE, 0, 0, new Item.Properties()));
     public static final RegistryObject<Item> DRAGONITE_HOE = ITEMS.register("dragonite_hoe", () -> new HoeItem(ModToolTiers.DRAGONITE, 0, 0, new Item.Properties()));
+
+    public static final RegistryObject<Item> DEVILSKNIFE = ITEMS.register("devilsknife", () -> new DevilsknifeItem(4, 2, new Item.Properties().rarity(Rarity.RARE)));
 
     public static final RegistryObject<Item> BAGUETTE = ITEMS.register("baguette", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(6).saturationMod(1.0f).build())));
     public static final RegistryObject<Item> SLICED_BREAD = ITEMS.register("sliced_bread", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.1f).build())));

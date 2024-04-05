@@ -4,8 +4,11 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,7 +18,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import xyz.j8bit.bitlabs.block.ModBlocks;
-import xyz.j8bit.bitlabs.event.ForgeEvents;
+import xyz.j8bit.bitlabs.entity.ModEntities;
 import xyz.j8bit.bitlabs.item.ModCreativeModeTabs;
 import xyz.j8bit.bitlabs.item.ModItems;
 
@@ -35,6 +38,7 @@ public class BitLabsMod
         ModItems.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -68,6 +72,8 @@ public class BitLabsMod
             event.accept(ModItems.DRAGONITE_AXE);
             event.accept(ModItems.DRAGONITE_SHOVEL);
             event.accept(ModItems.DRAGONITE_HOE);
+
+            event.accept(ModItems.DEVILSKNIFE);
         }
         else if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(ModItems.RAW_DRAGONITE);
@@ -85,6 +91,7 @@ public class BitLabsMod
         }
         else if (event.getTabKey() == CreativeModeTabs.COMBAT){
             event.accept(ModItems.DRAGONITE_SWORD);
+            event.accept(ModItems.DEVILSKNIFE);
         }
         else if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
             event.accept(ModItems.DRAGONITE_PICKAXE);
@@ -101,6 +108,32 @@ public class BitLabsMod
     {
         // Do something when the server starts
         //LOGGER.info("HELLO from server starting");
+    }
+
+    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+    public static class RegistryEvents {
+
+        @SubscribeEvent
+        public static void entityRenderers(final EntityRenderersEvent.RegisterRenderers event){
+            ModEntities.entityRenderers(event);
+        }
+        @SubscribeEvent
+        public static void attributeRegister(EntityAttributeCreationEvent event) {
+            ModEntities.onAttributeCreate(event);
+        }
+
+        @SubscribeEvent
+        public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event){
+            //event.registerLayerDefinition(CuteAlienModel.LAYER_LOCATION, CuteAlienModel::createBodyLayer);
+        }
+
+        @SubscribeEvent
+        public static void registerGUIOverlays(final RegisterGuiOverlaysEvent event){
+
+            //event.registerBelowAll("freddy_mask", FreddyMaskOverlay.FREDDY_MASK_OVERLAY);
+
+        }
+
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

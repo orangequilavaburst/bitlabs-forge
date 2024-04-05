@@ -11,11 +11,16 @@
   "item.bitlabs.baguette": "Baguette",
   "item.bitlabs.sliced_bread": "Sliced Bread",
 
+  "item.bitlabs.devilsknife": "Devilsknife",
+  "item.bitlabs.devilsknife.credits": "ellieeee.",
+
   "block.bitlabs.dragonite_ore": "Dragonite Ore",
   "block.bitlabs.deepslate_dragonite_ore": "Deepslate Dragonite Ore",
   "block.bitlabs.raw_dragonite_block": "Raw Dragonite Block",
   "block.bitlabs.dragonite_block": "Dragonite Block",
 
-  "itemGroup.bitlabs.bitlabs_main_tab": "J8-Bit's Experiments"
+  "itemGroup.bitlabs.bitlabs_main_tab": "J8-Bit's Experiments",
+
+  "tooltips.bitlabs.sprite_credits_generic": "Sprite by "
 
 }

@@ -1,0 +1,14 @@
+{
+
+  "loader":"forge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "bitlabs:item/devilsknife_handheld"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "bitlabs:item/devilsknife_gui"
+    }
+  }
+
+}
